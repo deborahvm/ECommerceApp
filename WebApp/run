@@ -1,0 +1,23 @@
+#!/bin/sh
+
+date=$(date +%F_%H-%M-%S)
+profile=$(grep user.profile experiment.properties | sed "s/.*=//")
+out=$(echo out_$profile/$date)
+mkdir -p $out
+
+LD_LIBRARY_PATH=./lib R_HOME=/usr/lib/R java -cp bin/:lib/cloudsim-3.0.3.jar:lib/JRI.jar org.cloudbus.cloudsim.Experiment1 > $out/out_full.txt
+
+ruby scripts/split.rb $out/out_full.txt $out
+
+files=$(ls $out | grep -v "out_full.txt")
+
+for f in $files ; do
+	cpu=$(echo $f | sed "s/out/cpu/")
+	nins=$(echo $f | sed "s/out/nins/")
+	cat $out/$f | ruby scripts/cpu.rb > $out/$cpu
+	cat $out/$f | ruby scripts/insadd.rb > $out/$nins
+done
+
+for f in $out/nins_*.txt ; do tail $f -n +2 >> $out/nins_full.txt ; done
+cp experiment.properties $out
+cp infrastructure.properties $out

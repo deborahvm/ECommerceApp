@@ -1,0 +1,11 @@
+para gerar os testes de wilcox execute:
+
+# bash wilcox.sh <pasta_com_dados_reais> <pasta_com_dados_simulados>
+
+exemplo:
+
+# bash wilcox.sh ../data/monitordata_15_browser_1_2013.11.24 out/2014-04-18_14-37-21
+
+os resultados sao gerados na pasta:
+
+wilcox/<pasta_com_dados_reais>_x_<pasta_com_dados_simulados>
