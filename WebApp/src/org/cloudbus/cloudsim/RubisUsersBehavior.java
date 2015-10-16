@@ -44,24 +44,7 @@ public class RubisUsersBehavior implements UsersBehavior {
 		generateStartTimeList((ArrayList<UserSession>) this.usersSessionList);
 
 	}
-
-	/*
-	 * public void generateUsersBehavior(int usersNumber, int usersArrivalRate,
-	 * String userProfile) {
-	 * 
-	 * // new R-engine re=new Rengine (new String [] {"--vanilla"}, false,
-	 * null); if (!re.waitForR()) { System.out.println ("Cannot load R");
-	 * return; }
-	 * 
-	 * re.eval("setwd(\"" + dir + "\")");
-	 * re.eval("source(\"rubisGenerateUsersBehavior.R\")");
-	 * re.eval("library('fExtremes')"); re.eval("generateUsersBehaviour(" +
-	 * usersNumber + "" + "," + usersArrivalRate + "" + "," + userProfile +
-	 * ")"); re.end();
-	 * 
-	 * }
-	 */
-
+	
 	static {
 		// new R-engine
 		re = new Rengine(new String[] { "--vanilla" }, false, null);
@@ -98,22 +81,6 @@ public class RubisUsersBehavior implements UsersBehavior {
 		// re.end();
 	}
 
-	/*
-	 * public List<UserSession> generateUsersSessionList(){
-	 * 
-	 * String fileName = dir.concat("/rubisUsersBehavior.txt");
-	 * 
-	 * BufferedReader reader = null;
-	 * 
-	 * try { FileInputStream is = new FileInputStream(fileName);
-	 * InputStreamReader input = new InputStreamReader(is); reader = new
-	 * BufferedReader(input); while (reader.ready()) {
-	 * parseLine(reader.readLine()); } reader.close(); } catch (Exception e) {
-	 * e.printStackTrace(); }
-	 * 
-	 * return usersSessionList; }
-	 */
-
 	public void generateUsersSessionList(int sessionID,
 			List<Integer> cloudletSizes) {
 
@@ -122,31 +89,6 @@ public class RubisUsersBehavior implements UsersBehavior {
 
 	}
 
-	/*
-	 * private void parseLine(String line) { if (line.matches("^[a-z;#]+.*")) {
-	 * return; }
-	 * 
-	 * String[] fields = line.trim().split("\\s+");
-	 * 
-	 * // empty line if (fields.length <= 1) { return; }
-	 * 
-	 * for (int i = 0; i < fields.length; i++) { fields[i] = fields[i].trim(); }
-	 * 
-	 * int sessionID = Integer.parseInt(fields[0]); int sessionStartTime =
-	 * Integer.parseInt(fields[1]); int sessionLength =
-	 * Integer.parseInt(fields[2]); int sessionThinkTime =
-	 * Integer.parseInt(fields[3]);
-	 * 
-	 * UserSession userSession = new UserSession(sessionID, sessionStartTime,
-	 * sessionLength, sessionThinkTime); usersSessionList.add(userSession);
-	 * 
-	 * //sort the usersSessionList by session start time
-	 * Collections.sort(usersSessionList, new Comparator<UserSession>() { public
-	 * int compare(UserSession a, UserSession b) { return
-	 * a.getSessionStartTime() - b.getSessionStartTime(); } });
-	 * 
-	 * }
-	 */
 
 	public UserSession nextSession(double currentTime) {
 		UserSession session = null;
