@@ -25,12 +25,13 @@ ECommerceApp depends on:
   3. [R][], it is a language and environment for statistical computing and graphics; 
   4. [JRI][], it is a Java/R Interface which allows to run R inside Java applications.
 
-You can find instructions for project configuration on the ECommerceApp wiki. ECommerceApp requires CloudSim version 3.0.3. 
+You can find instructions for project configuration on the [ECommerceApp wiki][wiki]. ECommerceApp requires CloudSim version 3.0.3. 
 
 [CloudSim2]: https://github.com/Cloudslab/cloudsim/releases
 [DVFS]: http://www.cloudbus.org/cloudsim/CloudSim_DVFS.rar
 [R]: https://cran.r-project.org/mirrors.html 
 [JRI]: https://rforge.net/JRI/index.html
+[wiki]: https://github.com/deborahvm/ECommerceApp/wiki/Installing-and-Configuring-JRI
 
 Example
 -------
